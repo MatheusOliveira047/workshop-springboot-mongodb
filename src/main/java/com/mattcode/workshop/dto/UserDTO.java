@@ -4,6 +4,7 @@ import com.mattcode.workshop.domain.User;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Optional;
 
 public class UserDTO implements Serializable {
     @Serial
@@ -20,6 +21,9 @@ public class UserDTO implements Serializable {
         id = obj.getId();
         name = obj.getName();
         email = obj.getEmail();
+    }
+
+    public UserDTO(Optional<User> user) {
     }
 
     public String getId() {
