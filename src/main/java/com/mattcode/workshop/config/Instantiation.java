@@ -2,6 +2,7 @@ package com.mattcode.workshop.config;
 
 import com.mattcode.workshop.domain.Post;
 import com.mattcode.workshop.domain.User;
+import com.mattcode.workshop.dto.AuthorDTO;
 import com.mattcode.workshop.repository.PostRepository;
 import com.mattcode.workshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,11 @@ public class Instantiation implements CommandLineRunner {
         User maria = new User(null, "Maria Brown", "maria@gmail.com");
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
-
-        Post post1 = new Post(null,sdf.parse("12/03/2018"),"Partiu viagem","Vou viajar para são paulo",maria);
-        Post post2 = new Post(null,sdf.parse("23/01/2018"),"Partiu praia","Vou viajar jeri",maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null,sdf.parse("12/03/2018"),"Partiu viagem","Vou viajar para são paulo",new AuthorDTO(maria));
+        Post post2 = new Post(null,sdf.parse("23/01/2018"),"Partiu praia","Vou viajar jeri",new AuthorDTO(maria));
+
         postRepository.saveAll(Arrays.asList(post1,post2));
 
     }
