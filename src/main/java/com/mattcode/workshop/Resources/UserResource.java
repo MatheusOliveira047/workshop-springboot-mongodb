@@ -1,5 +1,6 @@
 package com.mattcode.workshop.Resources;
 
+import com.mattcode.workshop.domain.Post;
 import com.mattcode.workshop.domain.User;
 import com.mattcode.workshop.dto.UserDTO;
 import com.mattcode.workshop.service.UserService;
@@ -54,5 +55,12 @@ public class UserResource {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+    }
+
 
 }
